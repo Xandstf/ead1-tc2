@@ -1,0 +1,33 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <td class="titleTable">Preço</td>
+                <td class="titleTable">Descrição</td>
+                <td class="titleTable">Título</td>
+                <td class="titleTable">Ação</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of listaProdutos">
+                <td>{{p.price}}</td>
+                <td>{{p.description}}</td>
+                <td>{{p.title}}</td>
+                <td>
+                    <button (click)="deletarProduto(p)">Deletar</button>
+                    <button (click)="mostrarAtualizarProduto(p)">Atualizar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="produtoParaAtualizar.produto">
+    <h1 style="margin-bottom: -20px;">Atualizar Produto</h1>
+    <p>Digite as infromações abaixo e em seguida clique em atualizar!</p>
+        <input [(ngModel)]="produtoParaAtualizar.produto.title" placeholder="Título">
+        <input [(ngModel)]="produtoParaAtualizar.produto.price" placeholder="Preço">
+        <br>
+        <textarea [(ngModel)]="produtoParaAtualizar.produto.description" placeholder="Descrição" rows="2" cols="47"></textarea>
+        <br>
+        <button (click)="atualizarProduto(produtoAtualizado)" style="width: 355px; padding: 10px;">Atualizar produto</button>
+</div>
